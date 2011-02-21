@@ -4,23 +4,23 @@
   %h3= "#{@paths[0]['prefix']}"
   - @paths.each do |path|
     %div{ :class => 'prefix' }
-      "Next Hop: #{path['nexthop']} (#{resolve_ip(path['nexthop'])})"
+      Next Hop: #{path['nexthop']} (#{resolve_ip(path['nexthop'])})
       %br
-      "AS Path: #{path['aspath'].join(' ') rescue '18559'}"
+      AS Path: #{path['aspath'].join(' ') rescue '18559'}
       %br
-      "Origin AS: #{path['origin_as']}"
+      Origin AS: #{path['origin_as']}
       %br
       %span{ :class => 'indent' }
-        "Local Preference: #{path['localpref']}"
+        Local Preference: #{path['localpref']}
         %br
-        "MED: #{path['med']}"
+        MED: #{path['med']}
         %br
-        "Origin: #{path['origin']}"
+        Origin: #{path['origin']}
         %br
-        "Last Updated: #{path['received']}"
+        Last Updated: #{path['received']}
         %br
-        "Received From: #{path['router_id']} (#{resolve_ip(path['router_id'])}, #{path['config_name']})"
+        Received From: #{path['router_id']} (#{resolve_ip(path['router_id'])}, #{path['config_name']})
         %br
-        "Communities: #{path['communities'].join(', ') rescue 'No communities.'}"
+        Communities: #{path['communities'].join(', ') rescue 'No communities.'}
         %br
       %br
