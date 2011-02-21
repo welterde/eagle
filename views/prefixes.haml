@@ -1,8 +1,8 @@
-- if paths.length == 0
+- if !@paths or @paths.length == 0
   %h3= 'No matching prefixes found'
 - else
-  %h3= "#{paths[0]['prefix']}"
-  - paths.each do |path|
+  %h3= "#{@paths[0]['prefix']}"
+  - @paths.each do |path|
     %div{ :class => 'prefix' }
       "Next Hop: #{path['nexthop']} (#{resolv_ip(path['nexthop'])})"
       %br
