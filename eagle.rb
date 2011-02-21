@@ -147,10 +147,12 @@ module Eagle
     end
 
     post '/lookup' do
-      nil unless params[:prefix]
+      nil unless params[:action] and params[:data]
       nil unless eagle = Eagle.new rescue nil
-      paths = eagle.find_prefix params[:prefix]
-      haml :prefixes
+      if params[:action] == 'prefix'
+        paths = eagle.find_prefix params[:data]
+        haml :prefixes
+      end
     end
   end
 end
