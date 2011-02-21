@@ -126,13 +126,6 @@ module Eagle
   end
 
   class WebApplication < Sinatra::Base
-    @eagle = nil
-
-    def initialize
-      @eagle = Eagle.new
-      super
-    end
-
     get '/' do
       haml :index
     end
@@ -148,7 +141,8 @@ module Eagle
 
     get '/lookup' do
       nil unless params[:prefix]
-      paths = @eagle.find_prefix params[:prefix]
+      nil unless eagle = Eagle.new rescue nil
+      paths = eagle.find_prefix params[:prefix]
       JSON.pretty_generate(paths)
     end
   end
