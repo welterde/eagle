@@ -126,6 +126,12 @@ module Eagle
   end
 
   class WebApplication < Sinatra::Base
+    helpers do
+      def resolve_ip(ip)
+        Net::DNS::Resolver.start(ip, Net::DNS::PTR).answer[0].to_s.split(/\s+/)[0].sub(/\.$/, '') rescue "no reverse DNS"
+      end
+    end
+
     get '/' do
       haml :index
     end

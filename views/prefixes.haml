@@ -6,7 +6,7 @@
 
 - paths.each do |path|
 %div{ :class => 'prefix' }
-  'Next Hop: ' + path.nexthop + ' (' + (Net::DNS::Resolver.start(path['nexthop'], Net::DNS::PTR).answer[0].to_s.split(/\s+/)[0].sub(/\.$/, '') rescue "no reverse DNS") + ')'
+  "Next Hop: #{path['nexthop']} (#{resolv_ip(path['nexthop'])})"
   %br
   "AS Path: #{path['aspath'].join(' ')}"
   %br
@@ -21,7 +21,7 @@
     %br
     "Last Updated: #{path['received']}"
     %br
-    'Received From: ' + path['router_id'] + ' (' + (Net::DNS::Resolver.start(path['router_id'], Net::DNS::PTR).answer[0].to_s.split(/\s+/)[0].sub(/\.$/, '') rescue "no reverse DNS") + ", #{path['config_name']})"
+    "Received From: #{path['router_id']} (#{resolve_ip(path['router_id'])}, #{path['config_name']})"
     %br
     "Communities: #{path['communities'].join(', ')}"
     %br
