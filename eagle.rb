@@ -129,7 +129,7 @@ module Eagle
     @eagle = nil
 
     def initialize
-      eagle = Eagle.new
+      @eagle = Eagle.new
       super
     end
 
