@@ -6,7 +6,7 @@
     %div{ :class => 'prefix' }
       "Next Hop: #{path['nexthop']} (#{resolve_ip(path['nexthop'])})"
       %br
-      "AS Path: #{path['aspath'].join(' ')}"
+      "AS Path: #{path['aspath'].join(' ') rescue '18559'}"
       %br
       "Origin AS: #{path['origin_as']}"
       %br
@@ -21,6 +21,6 @@
         %br
         "Received From: #{path['router_id']} (#{resolve_ip(path['router_id'])}, #{path['config_name']})"
         %br
-        "Communities: #{path['communities'].join(', ')}"
+        "Communities: #{path['communities'].join(', ') rescue 'No communities.'}"
         %br
       %br
