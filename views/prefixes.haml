@@ -1,28 +1,26 @@
 - if paths.length == 0
-<h3>No matching prefixes found</h3>
-
+  %h3= 'No matching prefixes found'
 - else
-%h3= "#{paths[0]['prefix']}"
-
-- paths.each do |path|
-%div{ :class => 'prefix' }
-  "Next Hop: #{path['nexthop']} (#{resolv_ip(path['nexthop'])})"
-  %br
-  "AS Path: #{path['aspath'].join(' ')}"
-  %br
-  "Origin AS: #{path['origin_as']}"
-  %br
-  %span{ :class => 'indent' }
-    "Local Preference: #{path['localpref']}"
-    %br
-    "MED: #{path['med']}"
-    %br
-    "Origin: #{path['origin']}"
-    %br
-    "Last Updated: #{path['received']}"
-    %br
-    "Received From: #{path['router_id']} (#{resolve_ip(path['router_id'])}, #{path['config_name']})"
-    %br
-    "Communities: #{path['communities'].join(', ')}"
-    %br
-  %br
+  %h3= "#{paths[0]['prefix']}"
+  - paths.each do |path|
+    %div{ :class => 'prefix' }
+      "Next Hop: #{path['nexthop']} (#{resolv_ip(path['nexthop'])})"
+      %br
+      "AS Path: #{path['aspath'].join(' ')}"
+      %br
+      "Origin AS: #{path['origin_as']}"
+      %br
+      %span{ :class => 'indent' }
+        "Local Preference: #{path['localpref']}"
+        %br
+        "MED: #{path['med']}"
+        %br
+        "Origin: #{path['origin']}"
+        %br
+        "Last Updated: #{path['received']}"
+        %br
+        "Received From: #{path['router_id']} (#{resolve_ip(path['router_id'])}, #{path['config_name']})"
+        %br
+        "Communities: #{path['communities'].join(', ')}"
+        %br
+      %br
