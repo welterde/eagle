@@ -16,5 +16,5 @@ $stdout.reopen(log)
 $stderr.reopen(log)
 
 # load core class and run
-require working + '/lg'
-run Lg::Application
+require working + '/eagle'
+run Eagle::WebApplication
