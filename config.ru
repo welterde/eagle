@@ -11,10 +11,10 @@ set :haml, :format => :html5
 disable :run
 
 # redirect logs
-log = File.new('sinatra.log', 'a')
+log = File.new('run/sinatra.log', 'a')
 $stdout.reopen(log)
 $stderr.reopen(log)
 
 # load core class and run
-require working + '/appname'
-run AppName::Application
+require working + '/lg'
+run Lg::Application

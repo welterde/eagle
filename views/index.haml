@@ -1,0 +1,20 @@
+%html
+  %head
+    %title bird looking glass
+    %script{:src => 'http://be.gs/jqgcdn', :type => 'text/javascript'}
+    %script{:src => 'lg.js', :type => 'text/javascript'}
+    %link{:rel => 'stylesheet', :href => 'lg.css'}
+  %body
+    %h1 lg.rb
+    #lookup
+      %form{:action => '/lookup', :method => 'post'}
+        %select#action{:name => 'action'}
+          %option{:value => ''} --
+          %option{:value => 'prefix'} lookup a bgp prefix
+          %option{:value => 'asn'} lookup an asn
+        %input#data{:name => 'data', :placeholder => '...', :size => '50', :type => 'text'}/
+        %input#btngo{:type => 'submit', :value => 'go!'}/
+    #results
+    %br
+    %hr{:noshade => '#000000' }
+    &copy;
