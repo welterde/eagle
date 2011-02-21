@@ -3,7 +3,7 @@ require 'haml'
 require 'sass'
 require 'socket'
 require 'json'
-require 'net/dns'
+require 'net/dns/resolver'
 
 module Eagle
   class Eagle
