@@ -1,0 +1,30 @@
+- if paths.length == 0
+<h3>No matching prefixes found</h3>
+
+- else
+%h3= "#{paths[0]['prefix']}"
+
+- paths.each do |path|
+%div{ :class => 'prefix' }
+  Next Hop: #{path.nexthop} (#{Net::DNS::Resolver.start(path['nexthop'], Net::DNS::PTR).answer[0].to_s.split(/\s+/)[0].sub(/\.$/, '') rescue "no reverse DNS"})
+  %br
+  AS Path: #{path['aspath'].join(' ')}
+  %br
+  Origin AS: #{path['origin_as']}
+  %br
+
+  %span{ :class => 'indent' }
+    Local Preference: #{path['localpref']}
+    %br
+    MED: #{path['med']}
+    %br
+    Origin: #{path['origin']}
+    %br
+    Last Updated: #{path['received']}
+    %br
+    Received From: #{path['router_id']} (#{Net::DNS::Resolver.start(path['router_id'], Net::DNS::PTR).answer[0].to_s.split(/\s+/)[0].sub(/\.$/, '') rescue "no reverse DNS"}, #{path['config_name']})
+    %br
+    Communities: #{path['communities'].join(', ')}
+    %br
+
+  %br

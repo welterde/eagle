@@ -145,5 +145,12 @@ module Eagle
       paths = eagle.find_prefix params[:prefix]
       JSON.pretty_generate(paths)
     end
+
+    post '/lookup' do
+      nil unless params[:prefix]
+      nil unless eagle = Eagle.new rescue nil
+      paths = eagle.find_prefix params[:prefix]
+      haml :prefixes
+    end
   end
 end
