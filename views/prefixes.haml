@@ -4,7 +4,7 @@
   %h3= "#{@paths[0]['prefix']}"
   - @paths.each do |path|
     %div{ :class => 'prefix' }
-      "Next Hop: #{path['nexthop']} (#{resolv_ip(path['nexthop'])})"
+      "Next Hop: #{path['nexthop']} (#{resolve_ip(path['nexthop'])})"
       %br
       "AS Path: #{path['aspath'].join(' ')}"
       %br
