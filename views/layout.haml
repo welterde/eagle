@@ -11,11 +11,10 @@
         %select#action{:name => 'action'}
           %option{:value => ''} --
           %option{:value => 'prefix'} lookup a bgp prefix
-          %option{:value => 'asn'} lookup an asn
         %input#data{:name => 'data', :placeholder => '...', :size => '50', :type => 'text'}/
         %input#btngo{:type => 'submit', :value => 'go!'}/
     #results
       =yield
     %br
     %hr{:noshade => '#000000' }
-    stuff goes here.
+    <!-- hi dave! -->
