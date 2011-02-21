@@ -154,7 +154,8 @@ module Eagle
     end
 
     post '/lookup' do
-      nil unless params[:action] and params[:data]
+      # default to prefix lookup for now
+      nil unless params[:data]
       nil unless eagle = Eagle.new rescue nil
 
       # default to prefix lookup for now
