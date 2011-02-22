@@ -3,7 +3,7 @@
 eagle is an extremely skinny "looking glass" I've written to interface with [BIRD].
 (It only does IPv4 BGP lookups, can it get any more skinny?)
 
-I wrote this so I could close a Terminal window, and at the prodding of [@dotwaffle].
+I wrote this so I could close a Terminal window, and with some motivation by [@dotwaffle].
 
 ## Installation
 
