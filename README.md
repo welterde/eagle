@@ -11,7 +11,7 @@ You need the following gems (and their dependencies):
 
     sinatra
     json
-    net/dns/resolver
+    net-dns
 
 git clone this repo into a directory of your choosing, update the path (chdir), IP address, and port in config.yml, and run 'rake start'.
 
