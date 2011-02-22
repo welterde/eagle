@@ -8,9 +8,10 @@ I wrote this so I could close a Terminal window, and at the prodding of [@dotwaf
 ## Installation
 
 You need the following gems (and their dependencies):
-* sinatra
-* json
-* net/dns/resolver
+
+    sinatra
+    json
+    net/dns/resolver
 
 git clone this repo into a directory of your choosing, update the path (chdir), IP address, and port in config.yml, and run 'rake start'.
 
