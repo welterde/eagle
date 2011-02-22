@@ -100,19 +100,25 @@ module Eagle
 
         # save each attribute
         output[BIRDC_ATTR_CODE][i].split(/\n/).each do |attr|
-          if (m = attr.match(/BGP.origin:\s+(.+)/)): path['origin'] = m[1].downcase end
-          if (m = attr.match(/BGP.next_hop:\s+(.+)/)): path['nexthop'] = m[1] end
-          if (m = attr.match(/BGP.local_pref:\s+(\d+)/)): path['localpref'] = m[1].to_i end
-          if (m = attr.match(/BGP.med:\s+(\d+)/)): path['med'] = m[1].to_i end
-          if (m = attr.match(/BGP.originator_id:\s+(.+)/)): path['originator_id'] = m[1] end
-          if (m = attr.match(/BGP.community:\s+(.+)/)): path['communities'] = m[1].gsub(/[\(\)]/, '').gsub(/,/, ':').split(/\s+/) end
-          if (m = attr.match(/BGP.as_path:\s+(.+)/))
-            path['aspath'] = Array.new
-            m[1].split(/\s+/).each { |as| path['aspath'].push as.to_i }
-          end
-          if (m = attr.match(/BGP.cluster_list:\s+(.+)/))
-            path['cluster'] = Array.new
-            m[1].split(/\s+/).each { |member| path['cluster'].push member }
+          case attr
+            when /BGP.origin:\s+(.+)/
+              path['origin'] = $~[1].downcase
+            when /BGP.next_hop:\s+(.+)/
+              path['nexthop'] = $~[1]
+            when /BGP.local_pref:\s+(\d+)/
+              path['localpref'] = $~[1].to_i
+            when /BGP.med:\s+(\d+)/
+              path['med'] = $~[1].to_i
+            when /BGP.originator_id:\s+(.+)/
+              path['originator_id'] = $~[1]
+            when /BGP.community:\s+(.+)/
+              path['communities'] = $~[1].gsub(/[\(\)]/, '').gsub(/,/, ':').split(/\s+/)
+            when /BGP.as_path:\s+(.+)/
+              path['aspath'] = Array.new
+              $~[1].split(/\s+/).each { |as| path['aspath'].push as.to_i }
+            when /BGP.cluster_list:\s+(.+)/
+              path['cluster'] = Array.new
+              $~[1].split(/\s+/).each { |member| path['cluster'].push member }
           end
         end
 
