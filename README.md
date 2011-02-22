@@ -17,7 +17,7 @@ git clone this repo into a directory of your choosing, update the path (chdir), 
 
 Looks something like:
 
-    git clone https://oogali@github.com/oogali/eagle.git
+    git clone https://github.com/oogali/eagle.git
     sudo gem install sinatra json net-dns
     cd eagle
     vi config.yml
