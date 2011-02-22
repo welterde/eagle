@@ -3,11 +3,11 @@
 eagle is an extremely skinny "looking glass" I've written to interface with [BIRD].
 (It only does IPv4 BGP lookups, can it get any more skinny?)
 
-I wrote this so I could close a Terminal window, and with some motivation by [@dotwaffle].
+I wrote this so I could close a Terminal window (of 101), and with some motivation by [@dotwaffle].
 
 ## Installation
 
-You need the following gems (and their dependencies):
+You need Ruby, plus the following gems (and their dependencies):
 
     sinatra
     json
@@ -18,6 +18,7 @@ git clone this repo into a directory of your choosing, update the path (chdir), 
 Looks something like:
 
     git clone https://oogali@github.com/oogali/eagle.git
+    sudo gem install sinatra json net-dns
     cd eagle
     vi config.yml
     rake start
