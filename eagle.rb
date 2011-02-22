@@ -128,6 +128,7 @@ module Eagle
 
   class WebApplication < Sinatra::Base
     helpers do
+      # quick and dirty helper to resolve IP addresses
       def resolve_ip(ip)
         Net::DNS::Resolver.start(ip, Net::DNS::PTR).answer[0].to_s.split(/\s+/)[4].sub(/\.$/, '') rescue "no reverse DNS"
       end
@@ -143,17 +144,22 @@ module Eagle
     end
 
     get '/eagle.js' do
+      content_type 'text/javascript', :charset => 'utf-8'
      File.read File.join('public', 'eagle.js')
     end
 
-    get '/lookup' do
+    # XXX: need a proper error handler for class init failure
+    #       and missing form parameters
+    get '/lookup/?' do
       nil unless params[:prefix]
       nil unless eagle = Eagle.new rescue nil
       paths = eagle.find_prefix params[:prefix]
       JSON.pretty_generate(paths)
     end
 
-    post '/lookup' do
+    # XXX: need a proper error handler for class init failure
+    #       and missing form parameters
+    post '/lookup/?' do
       # default to prefix lookup for now
       nil unless params[:data]
       nil unless eagle = Eagle.new rescue nil
