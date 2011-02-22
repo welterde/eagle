@@ -1,8 +1,9 @@
 # eagle
 
-eagle is a lightweight looking glass I've written to interface birdc.
+eagle is an extremely skinny "looking glass" I've written to interface with [BIRD].
+(It only does IPv4 BGP lookups, can it get any more skinny?)
 
-I wrote this so I could do faster lookups, and at the prodding of dotwaffle.
+I wrote this so I could close a Terminal window, and at the prodding of [@dotwaffle].
 
 ## Configuration
 
@@ -22,4 +23,8 @@ You need the following gems and their dependencies:
 git clone this repo into a directory of your choosing, update the path (chdir), IP address, and port in config.yml, and run 'rake start'.
 
 
-Drop me a line via e-mail, Twitter (@oogali), or IRC.
+Drop me a line via e-mail, Twitter ([@oogali]), or IRC.
+
+[BIRD]: http://bird.network.cz/
+[@dotwaffle]: http://twitter.com/dotwaffle
+[@oogali]: http://twitter.com/oogali
