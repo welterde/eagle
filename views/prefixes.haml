@@ -4,11 +4,9 @@
   %h3= "#{@paths[0]['prefix']}"
   - @paths.each do |path|
     %div{ :class => 'prefix' }
-      Next Hop: #{path['nexthop']} (#{resolve_ip(path['nexthop'])})
-      %br
       AS Path: #{path['aspath'].join(' ') rescue '18559'}
       %br
-      Origin AS: #{path['origin_as']}
+      Next Hop: #{path['nexthop']} (#{resolve_ip(path['nexthop'])})
       %br
       %span{ :class => 'indent' }
         Local Preference: #{path['localpref']}
