@@ -1,16 +1,18 @@
-= eagle
+# eagle
 
-eagle is a bootleg looking glass based on birdc.
+eagle is a lightweight looking glass I've written to interface birdc.
 
 I wrote this so I could do faster lookups, and at the prodding of dotwaffle.
 
-== Configuration
+## Configuration
 
-None really. This assumes that your BIRD socket file is /var/run/bird.ctl.
+Very little. This assumes that your BIRD socket file is /var/run/bird.ctl.
 
-I promise I'll add a configuration parameter or something in the future.
+I promise I'll add a socket configuration parameter or something in the future.
 
-== Installation
+Other parameters can be found in config.yml.
+
+## Installation
 
 You need the following gems and their dependencies:
 - sinatra
