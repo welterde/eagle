@@ -138,6 +138,21 @@ module Eagle
       def resolve_ip(ip)
         Net::DNS::Resolver.start(ip, Net::DNS::PTR).answer[0].to_s.split(/\s+/)[4].sub(/\.$/, '') rescue "no reverse DNS"
       end
+
+      # init eagle class and perform lookup
+      def lookup(prefix)
+        nil unless eagle = Eagle.new rescue nil
+        eagle.find_prefix prefix
+      end
+
+      # return array of a specific type
+      def collect(prefix, type)
+        collection = Array.new
+        lookup.prefix.each do |prefix|
+          collection.push prefix[type]
+        end
+        collection
+      end
     end
 
     get '/' do
@@ -156,25 +171,25 @@ module Eagle
 
     # XXX: need a proper error handler for class init failure
     #       and missing form parameters
-    get '/lookup/?' do
+    get '/lookup' do
       nil unless params[:prefix]
-      nil unless eagle = Eagle.new rescue nil
-      paths = eagle.find_prefix params[:prefix]
-      JSON.pretty_generate(paths)
+      JSON.pretty_generate lookup(params[:prefix])
     end
 
-    # XXX: need a proper error handler for class init failure
-    #       and missing form parameters
-    post '/lookup/?' do
+    post '/lookup' do
       # default to prefix lookup for now
       nil unless params[:data]
-      nil unless eagle = Eagle.new rescue nil
 
       # default to prefix lookup for now
       #if params[:action] == 'prefix'
-        @paths = eagle.find_prefix params[:data]
+        @paths = lookup params[:prefix]
         haml :prefixes
       #end
+    end
+
+    get %r{/lookup/(aspath|communities|localpref|nexthop|origin_as)} do
+      nil unless params[:prefix]
+      JSON.pretty_generate collect(params[:prefix], params[:captures].first).uniq
     end
   end
 end
